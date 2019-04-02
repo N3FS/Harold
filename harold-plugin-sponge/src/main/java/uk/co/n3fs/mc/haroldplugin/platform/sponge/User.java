@@ -1,5 +1,6 @@
 package uk.co.n3fs.mc.haroldplugin.platform.sponge;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class User implements uk.co.n3fs.mc.haroldplugin.platform.User<org.spongepowered.api.entity.living.player.User> {
@@ -7,6 +8,7 @@ public class User implements uk.co.n3fs.mc.haroldplugin.platform.User<org.sponge
     private final org.spongepowered.api.entity.living.player.User base;
 
     public User(org.spongepowered.api.entity.living.player.User base) {
+        Objects.requireNonNull(base);
         this.base = base;
     }
 
