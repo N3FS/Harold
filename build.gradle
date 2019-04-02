@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    group = project.pluginGroup
+    version = project.pluginVersion
+
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'me.lucko.luckperms:luckperms-api:4.3'
+        compile 'org.slf4j:slf4j-api:1.7.25' // same version as SpongeAPI 7
+        compile 'com.google.code.gson:gson:2.8.0' // same as SpongeAPO/Spigot, though older than Velocity
+    }
+}

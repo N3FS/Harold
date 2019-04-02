@@ -1,0 +1,17 @@
+repositories {
+    maven {
+        name 'velocity'
+        url 'https://repo.velocitypowered.com/snapshots/'
+    }
+}
+
+dependencies {
+    compile project(':harold-plugin-common')
+    compile 'com.velocitypowered:velocity-api:1.0-SNAPSHOT'
+}
+
+shadowJar {
+    dependencies {
+        include(dependency(':harold-plugin-common'))
+    }
+}

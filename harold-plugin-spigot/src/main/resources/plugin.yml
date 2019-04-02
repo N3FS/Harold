@@ -1,0 +1,8 @@
+name: Harold Plugin
+version: @version@
+main: uk.co.n3fs.mc.haroldplugin.platform.spigot.Bootstrap
+load: STARTUP
+depend: [Vault, LuckPerms]
+authors: [md678685]
+description: A moderation plugin, built for the N3FS
+website: https://n3fs.co.uk

@@ -1,0 +1,3 @@
+rootProject.name = 'harold-plugin'
+
+include 'harold-plugin-common', 'harold-plugin-spigot', 'harold-plugin-sponge', 'harold-plugin-velocity'
