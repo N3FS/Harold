@@ -12,7 +12,7 @@ import java.util.UUID;
  * The main plugin class.
  */
 public class HaroldPlugin {
-    private static final UUID dataUUID = UUID.fromString("n3fs-harold:global_plugin_data");
+    private static final UUID dataUUID = UUID.nameUUIDFromBytes("n3fs-harold:global_plugin_data".getBytes());
 
     private final LuckPermsApi lpApi;
     private final Scheduler scheduler;
