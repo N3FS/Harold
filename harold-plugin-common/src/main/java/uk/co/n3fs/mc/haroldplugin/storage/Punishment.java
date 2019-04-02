@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
-public final class Infraction {
+public final class Punishment {
 
     private final UUID uniqueId;
     private final InfractionType type;
@@ -17,7 +17,7 @@ public final class Infraction {
     private final Long expiry;
     private final String reason;
 
-    private Infraction(UUID uniqueId, InfractionType type, User<?> offender, User<?> creator, Long timestamp, Long expiry, String reason) {
+    private Punishment(UUID uniqueId, InfractionType type, User<?> offender, User<?> creator, Long timestamp, Long expiry, String reason) {
         Objects.requireNonNull(type, "An infraction type must be specified");
         Objects.requireNonNull(offender, "An offender must be specified");
         this.uniqueId = uniqueId != null ? uniqueId : UUID.randomUUID();
@@ -65,15 +65,15 @@ public final class Infraction {
         return new InfractionBuilder();
     }
 
-    public static InfractionBuilder builder(Infraction infraction) {
+    public static InfractionBuilder builder(Punishment punishment) {
         return new InfractionBuilder(
-            infraction.uniqueId,
-            infraction.type,
-            infraction.offender,
-            infraction.creator,
-            infraction.timestamp,
-            infraction.expiry,
-            infraction.reason);
+            punishment.uniqueId,
+            punishment.type,
+            punishment.offender,
+            punishment.creator,
+            punishment.timestamp,
+            punishment.expiry,
+            punishment.reason);
     }
 
     public static class InfractionBuilder {
@@ -156,8 +156,8 @@ public final class Infraction {
             return this;
         }
 
-        public Infraction build() {
-            return new Infraction(uniqueId, type, offender, creator, timestamp, expiry, reason);
+        public Punishment build() {
+            return new Punishment(uniqueId, type, offender, creator, timestamp, expiry, reason);
         }
     }
 
