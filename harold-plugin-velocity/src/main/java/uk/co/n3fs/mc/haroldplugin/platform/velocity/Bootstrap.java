@@ -43,8 +43,7 @@ public class Bootstrap {
                 new RuntimeException("Proxy init event unexpectedly fired twice"));
         }
 
-        LuckPermsApi lpApi = LuckPerms.getApi();
-        instance = new HaroldPlugin(lpApi, scheduler, userManager, logger);
+        instance = new HaroldPlugin(scheduler, userManager, logger);
     }
 
     public ProxyServer getProxy() {

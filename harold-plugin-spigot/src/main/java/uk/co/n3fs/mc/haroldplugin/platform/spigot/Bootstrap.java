@@ -30,29 +30,7 @@ public final class Bootstrap extends JavaPlugin {
                 new RuntimeException("Plugin was not cleanly disabled previously"));
         }
 
-        Optional<LuckPermsApi> lpOpt = LuckPerms.getApiSafe();
-        if (lpOpt.isPresent()) {
-            LuckPermsApi lpApi = lpOpt.get();
-            instance = new HaroldPlugin(lpApi, scheduler, userManager, logger);
-        } else {
-            // It's technically possible for LuckPerms to load after us, though it shouldn't
-            getLogger().warning("LuckPerms wasn't loaded before Harold. Waiting...");
-            getLogger().warning("Harold will not work until LuckPerms is available.");
-            this.loadLate();
-        }
-
-    }
-
-    private void loadLate() {
-        getServer().getPluginManager().registerEvents(new Listener() {
-            @EventHandler(priority = EventPriority.MONITOR)
-            public void onPluginEnable(PluginEnableEvent event) {
-                if (event.getPlugin().getName().equals("LuckPerms")) {
-                    event.getHandlers().unregister(this);
-                    instance = new HaroldPlugin(LuckPerms.getApi(), scheduler, userManager, logger);
-                }
-            }
-        }, this);
+        instance = new HaroldPlugin(scheduler, userManager, logger);
     }
 
     @Override

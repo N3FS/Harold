@@ -45,8 +45,7 @@ public class Bootstrap {
                 new RuntimeException("Pre-init event unexpectedly fired twice"));
         }
 
-        LuckPermsApi lpApi = LuckPerms.getApi();
-        instance = new HaroldPlugin(lpApi, scheduler, userManager, logger);
+        instance = new HaroldPlugin(scheduler, userManager, logger);
     }
 
     Optional<Server> getServer() {

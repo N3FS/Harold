@@ -1,5 +1,6 @@
 package uk.co.n3fs.mc.haroldplugin;
 
+import me.lucko.luckperms.LuckPerms;
 import me.lucko.luckperms.api.LuckPermsApi;
 import me.lucko.luckperms.api.User;
 import org.slf4j.Logger;
@@ -21,8 +22,8 @@ public class HaroldPlugin {
     private final Logger logger;
     private User dataUser;
 
-    public HaroldPlugin(LuckPermsApi lpApi, Scheduler scheduler, UserManager userManager, Logger logger) {
-        this.lpApi = lpApi;
+    public HaroldPlugin(Scheduler scheduler, UserManager userManager, Logger logger) {
+        this.lpApi = LuckPerms.getApi();
         this.scheduler = scheduler;
         this.userManager = userManager;
         this.logger = logger;
