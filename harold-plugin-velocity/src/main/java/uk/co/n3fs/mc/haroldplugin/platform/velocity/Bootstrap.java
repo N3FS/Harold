@@ -31,7 +31,8 @@ public class Bootstrap {
     @Inject private ProxyServer proxy;
 
     private HaroldPlugin instance;
-    private Scheduler scheduler = new Scheduler(this, proxy.getScheduler());
+    private SchedulerImpl scheduler = new SchedulerImpl(this, proxy.getScheduler());
+    private UserManagerImpl userManager = new UserManagerImpl(this);
     @Inject private Logger logger;
 
     @Subscribe
@@ -43,6 +44,10 @@ public class Bootstrap {
         }
 
         LuckPermsApi lpApi = LuckPerms.getApi();
-        instance = new HaroldPlugin(lpApi, scheduler, logger);
+        instance = new HaroldPlugin(lpApi, scheduler, userManager, logger);
+    }
+
+    public ProxyServer getProxy() {
+        return proxy;
     }
 }

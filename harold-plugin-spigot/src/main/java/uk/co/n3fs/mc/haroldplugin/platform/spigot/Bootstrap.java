@@ -19,7 +19,8 @@ import java.util.Optional;
 public final class Bootstrap extends JavaPlugin {
 
     private HaroldPlugin instance;
-    private final Scheduler scheduler = new Scheduler(this);
+    private final SchedulerImpl scheduler = new SchedulerImpl(this);
+    private final UserManagerImpl userManager = new UserManagerImpl(this);
     private final Logger logger = LoggerFactory.getLogger("Harold");
 
     @Override
@@ -32,7 +33,7 @@ public final class Bootstrap extends JavaPlugin {
         Optional<LuckPermsApi> lpOpt = LuckPerms.getApiSafe();
         if (lpOpt.isPresent()) {
             LuckPermsApi lpApi = lpOpt.get();
-            instance = new HaroldPlugin(lpApi, scheduler, logger);
+            instance = new HaroldPlugin(lpApi, scheduler, userManager, logger);
         } else {
             // It's technically possible for LuckPerms to load after us, though it shouldn't
             getLogger().warning("LuckPerms wasn't loaded before Harold. Waiting...");
@@ -48,7 +49,7 @@ public final class Bootstrap extends JavaPlugin {
             public void onPluginEnable(PluginEnableEvent event) {
                 if (event.getPlugin().getName().equals("LuckPerms")) {
                     event.getHandlers().unregister(this);
-                    instance = new HaroldPlugin(LuckPerms.getApi(), scheduler, logger);
+                    instance = new HaroldPlugin(LuckPerms.getApi(), scheduler, userManager, logger);
                 }
             }
         }, this);

@@ -7,12 +7,12 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
-public class Scheduler implements uk.co.n3fs.mc.haroldplugin.platform.Scheduler {
+public class SchedulerImpl implements uk.co.n3fs.mc.haroldplugin.platform.Scheduler {
     private Bootstrap plugin;
     private final com.velocitypowered.api.scheduler.Scheduler velocityScheduler;
     private final Map<Integer, ScheduledTask> tasks = new HashMap<>();
 
-    Scheduler(Bootstrap plugin, com.velocitypowered.api.scheduler.Scheduler velocityScheduler) {
+    SchedulerImpl(Bootstrap plugin, com.velocitypowered.api.scheduler.Scheduler velocityScheduler) {
         this.plugin = plugin;
         this.velocityScheduler = velocityScheduler;
     }

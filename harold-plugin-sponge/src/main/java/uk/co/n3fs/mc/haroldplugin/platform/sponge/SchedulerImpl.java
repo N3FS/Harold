@@ -1,17 +1,16 @@
 package uk.co.n3fs.mc.haroldplugin.platform.sponge;
 
 import org.spongepowered.api.scheduler.Task;
-import uk.co.n3fs.mc.haroldplugin.platform.Scheduler;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class Scheduler implements uk.co.n3fs.mc.haroldplugin.platform.Scheduler {
+public class SchedulerImpl implements uk.co.n3fs.mc.haroldplugin.platform.Scheduler {
     private Bootstrap plugin;
     private Map<Integer, Task> tasks;
 
-    Scheduler(Bootstrap plugin) {
+    SchedulerImpl(Bootstrap plugin) {
         this.plugin = plugin;
         this.tasks = new HashMap<>();
     }

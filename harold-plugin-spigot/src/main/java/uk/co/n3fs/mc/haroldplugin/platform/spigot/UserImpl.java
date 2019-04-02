@@ -1,22 +1,22 @@
-package uk.co.n3fs.mc.haroldplugin.platform.velocity;
+package uk.co.n3fs.mc.haroldplugin.platform.spigot;
 
-import com.velocitypowered.api.proxy.Player;
+import org.bukkit.entity.Player;
 
 import java.util.Objects;
 import java.util.UUID;
 
-public class User implements uk.co.n3fs.mc.haroldplugin.platform.User<Player> {
+public class UserImpl implements uk.co.n3fs.mc.haroldplugin.platform.User<Player> {
 
     private final Player base;
 
-    public User(Player base) {
+    public UserImpl(Player base) {
         Objects.requireNonNull(base);
         this.base = base;
     }
 
     @Override
     public String getName() {
-        return base.getUsername();
+        return base.getName();
     }
 
     @Override

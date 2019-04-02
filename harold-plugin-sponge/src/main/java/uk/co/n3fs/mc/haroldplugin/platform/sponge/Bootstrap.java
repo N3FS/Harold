@@ -4,11 +4,15 @@ import com.google.inject.Inject;
 import me.lucko.luckperms.LuckPerms;
 import me.lucko.luckperms.api.LuckPermsApi;
 import org.slf4j.Logger;
+import org.spongepowered.api.Game;
+import org.spongepowered.api.Server;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
 import uk.co.n3fs.mc.haroldplugin.HaroldPlugin;
+
+import java.util.Optional;
 
 /**
  * Bootstraps Harold on Sponge platforms.
@@ -28,7 +32,9 @@ import uk.co.n3fs.mc.haroldplugin.HaroldPlugin;
 public class Bootstrap {
 
     private HaroldPlugin instance;
-    private Scheduler scheduler = new Scheduler(this);
+    private SchedulerImpl scheduler = new SchedulerImpl(this);
+    private UserManagerImpl userManager = new UserManagerImpl(this);
+    @Inject private Game game;
     @Inject private Logger logger;
 
     @Listener
@@ -40,6 +46,10 @@ public class Bootstrap {
         }
 
         LuckPermsApi lpApi = LuckPerms.getApi();
-        instance = new HaroldPlugin(lpApi, scheduler, logger);
+        instance = new HaroldPlugin(lpApi, scheduler, userManager, logger);
+    }
+
+    Optional<Server> getServer() {
+        return game.isServerAvailable() ? Optional.of(game.getServer()) : Optional.empty();
     }
 }

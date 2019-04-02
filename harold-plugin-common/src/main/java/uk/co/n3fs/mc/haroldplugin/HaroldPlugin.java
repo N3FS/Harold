@@ -4,6 +4,7 @@ import me.lucko.luckperms.api.LuckPermsApi;
 import me.lucko.luckperms.api.User;
 import org.slf4j.Logger;
 import uk.co.n3fs.mc.haroldplugin.platform.Scheduler;
+import uk.co.n3fs.mc.haroldplugin.platform.UserManager;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -16,12 +17,14 @@ public class HaroldPlugin {
 
     private final LuckPermsApi lpApi;
     private final Scheduler scheduler;
+    private final UserManager userManager;
     private final Logger logger;
     private User dataUser;
 
-    public HaroldPlugin(LuckPermsApi lpApi, Scheduler scheduler, Logger logger) {
+    public HaroldPlugin(LuckPermsApi lpApi, Scheduler scheduler, UserManager userManager, Logger logger) {
         this.lpApi = lpApi;
         this.scheduler = scheduler;
+        this.userManager = userManager;
         this.logger = logger;
 
         // TODO: storage

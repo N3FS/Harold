@@ -1,20 +1,22 @@
-package uk.co.n3fs.mc.haroldplugin.platform.sponge;
+package uk.co.n3fs.mc.haroldplugin.platform.velocity;
+
+import com.velocitypowered.api.proxy.Player;
 
 import java.util.Objects;
 import java.util.UUID;
 
-public class User implements uk.co.n3fs.mc.haroldplugin.platform.User<org.spongepowered.api.entity.living.player.User> {
+public class UserImpl implements uk.co.n3fs.mc.haroldplugin.platform.User<Player> {
 
-    private final org.spongepowered.api.entity.living.player.User base;
+    private final Player base;
 
-    public User(org.spongepowered.api.entity.living.player.User base) {
+    public UserImpl(Player base) {
         Objects.requireNonNull(base);
         this.base = base;
     }
 
     @Override
     public String getName() {
-        return base.getName();
+        return base.getUsername();
     }
 
     @Override
@@ -28,7 +30,7 @@ public class User implements uk.co.n3fs.mc.haroldplugin.platform.User<org.sponge
     }
 
     @Override
-    public org.spongepowered.api.entity.living.player.User getBase() {
+    public Player getBase() {
         return base;
     }
 }

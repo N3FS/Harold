@@ -1,15 +1,13 @@
-package uk.co.n3fs.mc.haroldplugin.platform.spigot;
-
-import org.bukkit.entity.Player;
+package uk.co.n3fs.mc.haroldplugin.platform.sponge;
 
 import java.util.Objects;
 import java.util.UUID;
 
-public class User implements uk.co.n3fs.mc.haroldplugin.platform.User<Player> {
+public class UserImpl implements uk.co.n3fs.mc.haroldplugin.platform.User<org.spongepowered.api.entity.living.player.User> {
 
-    private final Player base;
+    private final org.spongepowered.api.entity.living.player.User base;
 
-    public User(Player base) {
+    public UserImpl(org.spongepowered.api.entity.living.player.User base) {
         Objects.requireNonNull(base);
         this.base = base;
     }
@@ -30,7 +28,7 @@ public class User implements uk.co.n3fs.mc.haroldplugin.platform.User<Player> {
     }
 
     @Override
-    public Player getBase() {
+    public org.spongepowered.api.entity.living.player.User getBase() {
         return base;
     }
 }
