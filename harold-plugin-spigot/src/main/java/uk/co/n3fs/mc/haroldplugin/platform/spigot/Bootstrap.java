@@ -19,7 +19,7 @@ import java.util.Optional;
 public final class Bootstrap extends JavaPlugin {
 
     private HaroldPlugin instance;
-    private final Scheduler scheduler = new Scheduler(this, getServer().getScheduler());
+    private final Scheduler scheduler = new Scheduler(this);
     private final Logger logger = LoggerFactory.getLogger("Harold");
 
     @Override

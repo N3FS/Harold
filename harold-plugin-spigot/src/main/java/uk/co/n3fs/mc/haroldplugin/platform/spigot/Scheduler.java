@@ -2,15 +2,14 @@ package uk.co.n3fs.mc.haroldplugin.platform.spigot;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
-import uk.co.n3fs.mc.haroldplugin.platform.Scheduler;
 
 public class Scheduler implements uk.co.n3fs.mc.haroldplugin.platform.Scheduler {
     private final Plugin plugin;
     private final BukkitScheduler scheduler;
 
-    Scheduler(Plugin plugin, BukkitScheduler scheduler) {
+    Scheduler(Plugin plugin) {
         this.plugin = plugin;
-        this.scheduler = scheduler;
+        this.scheduler = plugin.getServer().getScheduler();
     }
 
     @Override
